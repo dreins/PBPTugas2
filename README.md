@@ -15,7 +15,7 @@ Kelas : PBP - C
 # Jawaban
 
 ### 1. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html
-/assignment-repository/assets/BaganPBPTugas2.png
+![](assets/BaganPBPTugas2.png)
 
 ### 2. Jelaskan kenapa menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
 Virtual environment digunakan untuk membangun ekslusivitas antar beberapa orang yang membangun sebuah aplikasi website. Hal ini dilakukan untuk memastikan bahwa aplikasi website yang kita buat dapat berjalan dengan baik pada sistem operasi yang sama, meskipun pada dependencies yang berbeda - beda. Ibaratkan seorang bernama A dan seorang bernama B memiliki versi Library Python yang berbeda, maka eksklusivitas ini akan menjamin bahwa proyek dapat berjalan dalam lingkup mereka masing - masing tanpa perlu menyamakan versi dari sistem. 
