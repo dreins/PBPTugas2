@@ -1,0 +1,112 @@
+[
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk":1,
+        "fields": {
+            "watched" : 1,
+            "title" : "Doctor Strange",
+            "rating" : "7.5",
+            "release_date" : 2016,
+            "review" : "....."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk":2,
+        "fields": {
+            "watched" : 1,
+            "title" : "Interstellar",
+            "rating" : "8.6",
+            "release_date" : 2014,
+            "review" : "....."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk":3,
+        "fields": {
+            "watched" : 1,
+            "title" : "Inception",
+            "rating" : "8.8",
+            "release_date" : 2010,
+            "review" : "....."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk":4,
+        "fields": {
+            "watched" : 1,
+            "title" : "The Wolf of Wall Street",
+            "rating" : "8.2",
+            "release_date" : 2013,
+            "review" : "....."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk":5,
+        "fields": {
+            "watched" : 0,
+            "title" : "The Avengers",
+            "rating" : "8.1",
+            "release_date" : 2012,
+            "review" : "....."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk":6,
+        "fields": {
+            "watched" : 0,
+            "title" : "300",
+            "rating" : "7.7",
+            "release_date" : 2006,
+            "review" : "....."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk":7,
+        "fields": {
+            "watched" : 0,
+            "title" : "I Am Legend",
+            "rating" : "7.2",
+            "release_date" : 2007,
+            "review" : "....."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk":8,
+        "fields": {
+            "watched" : 1,
+            "title" : "Avatar",
+            "rating" : "7.9",
+            "release_date" : 2009,
+            "review" : "....."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk":9,
+        "fields": {
+            "watched" : 0,
+            "title" : "The Dark Knight",
+            "rating" : "8.4",
+            "release_date" : 2012,
+            "review" : "....."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk":10,
+        "fields": {
+            "watched" : 1,
+            "title" : "Memento",
+            "rating" : "8.4",
+            "release_date" : 2000,
+            "review" : "....."
+        }
+    }
+]
