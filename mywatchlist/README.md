@@ -126,6 +126,22 @@ Pada dasarnya, kita harus mengetahui dulu tentang apa itu data delivery. Data de
     ]
 ```
 
+### 4. Mengakses tiga URL di poin 6 menggunakan Postman, menangkap screenshot, dan menambahkannya ke dalam `README.md`
+#### HTML
+![](assets/Tugas3TestingHTML.png)
+
+#### XML
+![](assets/Tugas3TestingXML.png)
+
+#### JSON
+![](assets/Tugas3TestingJSON.png)
+
+
+### 5. Menambahkan unit test pada `tests.py` untuk menguji bahwa tiga URL di poin 6 dapat mengembalikan respon `HTTP 200 OK`
+![](assets/TestingPage.png)
+
+
+
 
 
 

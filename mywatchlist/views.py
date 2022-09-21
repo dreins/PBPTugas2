@@ -21,7 +21,7 @@ def show_mywatchlist_msg(request):
     return render(request, 'mywatchlist.html',context)
 
 
-def show_mywatchlist_html(request):
+def show_watchlist_html(request):
     data_watchlist = MyWatchList.objects.all()
     context = {
         'data_mywatchlist': data_watchlist,
