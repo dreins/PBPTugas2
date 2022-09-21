@@ -6,8 +6,8 @@
             "watched" : 1,
             "title" : "Doctor Strange",
             "rating" : "7.5",
-            "release_date" : 2016,
-            "review" : "....."
+            "release_date" : "October 26, 2016",
+            "review" : "One of the best movies of Marvel, must watch for people who likes time manipulation plot"
         }
     },
     {
@@ -17,8 +17,8 @@
             "watched" : 1,
             "title" : "Interstellar",
             "rating" : "8.6",
-            "release_date" : 2014,
-            "review" : "....."
+            "release_date" : "November 6, 2014",
+            "review" : "The tales about family and space, definitely will make you laugh, cry, and mad in the entire film"
         }
     },
     {
@@ -28,8 +28,8 @@
             "watched" : 1,
             "title" : "Inception",
             "rating" : "8.8",
-            "release_date" : 2010,
-            "review" : "....."
+            "release_date" : "July 16, 2010",
+            "review" : "Great movies from Interstellar's director, has a great plot concept and idea about using dreams to manipulate people psychology"
         }
     },
     {
@@ -39,8 +39,8 @@
             "watched" : 1,
             "title" : "The Wolf of Wall Street",
             "rating" : "8.2",
-            "release_date" : 2013,
-            "review" : "....."
+            "release_date" : "January 21, 2014",
+            "review" : "It's telling us about good and bad side of being stocks broker"
         }
     },
     {
@@ -50,8 +50,8 @@
             "watched" : 0,
             "title" : "The Avengers",
             "rating" : "8.1",
-            "release_date" : 2012,
-            "review" : "....."
+            "release_date" : "May 4, 2012",
+            "review" : "Foundation of Marvel Universe, introducing us about unity of Marvel Character"
         }
     },
     {
@@ -61,8 +61,8 @@
             "watched" : 0,
             "title" : "300",
             "rating" : "7.7",
-            "release_date" : 2006,
-            "review" : "....."
+            "release_date" : "March 9, 2007",
+            "review" : "Story about King Leonidas and 300 spartans army againts Persian, recommended to watch!"
         }
     },
     {
@@ -72,8 +72,8 @@
             "watched" : 0,
             "title" : "I Am Legend",
             "rating" : "7.2",
-            "release_date" : 2007,
-            "review" : "....."
+            "release_date" : "December 12, 2007",
+            "review" : "Who don't know I am Legend? Story about apocalypse featuring Will Smith brilliant acting"
         }
     },
     {
@@ -83,8 +83,8 @@
             "watched" : 1,
             "title" : "Avatar",
             "rating" : "7.9",
-            "release_date" : 2009,
-            "review" : "....."
+            "release_date" : "December 17, 2009",
+            "review" : "The highest grossing movies of all time, about human and entity from other world"
         }
     },
     {
@@ -94,8 +94,8 @@
             "watched" : 0,
             "title" : "The Dark Knight",
             "rating" : "8.4",
-            "release_date" : 2012,
-            "review" : "....."
+            "release_date" : "July 18, 2008",
+            "review" : "Joker play a big role in this movies, what a brilliant acting of Heath Ledger!"
         }
     },
     {
@@ -105,8 +105,8 @@
             "watched" : 1,
             "title" : "Memento",
             "rating" : "8.4",
-            "release_date" : 2000,
-            "review" : "....."
+            "release_date" : "March 16, 2001",
+            "review" : "This movies has a unique plot, starting from the end. It plot twist will make your mind twisted too"
         }
     }
 ]

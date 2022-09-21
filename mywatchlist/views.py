@@ -7,7 +7,7 @@ from django.core import serializers
 
 def show_mywatchlist_msg(request):
     data_watchlist = MyWatchList.objects.all()
-    watched_status = sum(data_watchlist.filter(watched = True)) > sum(data_watchlist.filter(watched = False))
+    watched_status = (data_watchlist.filter(watched = True)).count() >= (data_watchlist.filter(watched = False)).count()
 
     context = {
         'data_mywatchlist': data_watchlist,
@@ -15,14 +15,9 @@ def show_mywatchlist_msg(request):
         'kelas': 'PBP - C',
         'student_id': 2106751083,
         'watched_status' : 
-                'Selamat, kamu sudah banyak menonton!' if status 
+                'Selamat, kamu sudah banyak menonton!' if watched_status 
                 else 'Wah, kamu masih sedikit menonton!',
     }
-    status = data_watchlist.filter(
-        watched = True
-    ).count() > data_watchlist.filter(
-        watched = False
-    ).count()
     return render(request, 'mywatchlist.html',context)
 
 

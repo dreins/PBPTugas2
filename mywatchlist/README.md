@@ -13,6 +13,8 @@ Kelas : PBP - C
 
 [Tugas 3 Deployment - JSON](https://pbptugastiga.herokuapp.com/mywatchlist/json/)
 
+[Tugas 3 Deployment - Versi Bonus](https://pbptugastiga.herokuapp.com/mywatchlist/)
+
 [Tugas 3 Repository](https://github.com/dreins/PBPTugas2.git)
 
 
@@ -107,12 +109,23 @@ Pada dasarnya, kita harus mengetahui dulu tentang apa itu data delivery. Data de
     app_name = 'mywatchlist'
 
     urlpatterns = [
-        path('', show_mywatchlist, name='mywatchlist'),
+        path('', show_mywatchlist_msg, name='mywatchlist'),
         path('html/', show_mywatchlist_html, name='mywatchlist'),
         path('xml/', show_watchlist_xml, name='mywatchlist'),
         path('json/', show_watchlist_json, name='mywatchlist'),
     ]
 ```
+
+9. Menambahkan url `mywatchlist` dalam `urls.py` milik proyek, yaitu `project_django`
+
+```python
+    urlpatterns = [
+        .........,
+        path('mywatchlist/', include('mywatchlist.urls')),
+        .........,
+    ]
+```
+
 
 
 
