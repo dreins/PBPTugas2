@@ -5,13 +5,34 @@ from django.core import serializers
 
 # TODO: Create your views here.
 
+def show_mywatchlist_msg(request):
+    data_watchlist = MyWatchList.objects.all()
+    watched_status = sum(data_watchlist.filter(watched = True)) > sum(data_watchlist.filter(watched = False))
+
+    context = {
+        'data_mywatchlist': data_watchlist,
+        'nama': 'Davyn Reinhard Santoso',
+        'kelas': 'PBP - C',
+        'student_id': 2106751083,
+        'watched_status' : 
+                'Selamat, kamu sudah banyak menonton!' if status 
+                else 'Wah, kamu masih sedikit menonton!',
+    }
+    status = data_watchlist.filter(
+        watched = True
+    ).count() > data_watchlist.filter(
+        watched = False
+    ).count()
+    return render(request, 'mywatchlist.html',context)
+
+
 def show_mywatchlist_html(request):
     data_watchlist = MyWatchList.objects.all()
     context = {
-    'data_mywatchlist': data_watchlist,
-    'nama': 'Davyn Reinhard Santoso',
-    'kelas': 'PBP - C',
-    'student_id': 2106751083,
+        'data_mywatchlist': data_watchlist,
+        'nama': 'Davyn Reinhard Santoso',
+        'kelas': 'PBP - C',
+        'student_id': 2106751083,
     }
     return render(request, 'mywatchlist.html', context)
 

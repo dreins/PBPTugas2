@@ -1,4 +1,4 @@
-# PBP Tugas 2
+# PBP Tugas 3
 
 Nama : Davyn Reinhard Santoso
 
@@ -7,25 +7,115 @@ NPM : 2106751083
 Kelas : PBP - C
 
 # 🔗 Links
-[Tugas 2 Deployment](https://pbptugasdua.herokuapp.com/katalog/)
+[Tugas 3 Deployment - HTML](https://pbptugastiga.herokuapp.com/mywatchlist/html/)
 
-[Tugas 2 Repository](https://github.com/dreins/PBPTugas2.git)
+[Tugas 3 Deployment - XML](https://pbptugastiga.herokuapp.com/mywatchlist/xml/)
+
+[Tugas 3 Deployment - JSON](https://pbptugastiga.herokuapp.com/mywatchlist/json/)
+
+[Tugas 3 Repository](https://github.com/dreins/PBPTugas2.git)
 
 
 # Jawaban
 
-### 1. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html
-![](assets/BaganPBPTugas2.png)
+### 1. Jelaskan perbedaan antara JSON, XML, dan HTML!
+Dalam mata kuliah PBP, kita dikenalkan dengan istilah - istilah seperti JSON, XML, dan HTML. Pada dasarnya, XML dan JSON berbeda dengan HTML, dimana XML dan JSON merupakan salah dua dari format pertukaran data. HTML sendiri merupakan jenis format yang ditujukan untuk tampilan dari data. HTML tidak memiliki rincian detail dari data, sedangkan XML dan JSON memilikinya. Kita telah mengetahui bahwa HTML berbeda dengan XML dan JSON, sehingga kita dapat mendalami lagi apa perbedaan XML dan JSON. 
 
-### 2. Jelaskan kenapa menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
-Virtual environment digunakan untuk membangun ekslusivitas antar beberapa orang yang membangun sebuah aplikasi website. Hal ini dilakukan untuk memastikan bahwa aplikasi website yang kita buat dapat berjalan dengan baik pada sistem operasi yang sama, meskipun pada dependencies yang berbeda - beda. Ibaratkan seorang bernama A dan seorang bernama B memiliki versi Library Python yang berbeda, maka eksklusivitas ini akan menjamin bahwa proyek dapat berjalan dalam lingkup mereka masing - masing tanpa perlu menyamakan versi dari sistem. 
+Perbedaan utamanya sendiri terletak pada jenis bahasa yang digunakan, dimana XML tidak digunakan dengan bahasa pemrograman, tetapi dengan bahasa markup seperti HTML. JSON sendiri merupakan singkatan JavaScript Object Notation, dimana JSON dibangun dengan bahasa pemrograman JavaScript. JSON menggunakan konsep mapping menggunakan key dan value, layaknya dictionary pada python, tidak seperti XML yang menggunakan struktur pohon(tree structure) dengan tag layaknya struktur HTML. JSON sendiri lebih low-level, namun memiliki fleksibilitas yang lebih tinggi daripada XML seperti dapat mengakses array, kecepatan prosesnya mengalahkan XML, dan tanpa memiliki ketentuan namespace.
 
-### 3. Jelaskan bagaimana cara kamu mengimplementasikan poin 1 sampai dengan 4 di atas
-1. Pertama - tama, saya membuat sebuah fungsi bernama katalog dengan menggunakan variabel request yang dipanggil jika client mengakses URL. Dalam fungsi, saya menaruh suatu data yang nantinya berasal dari file .json ditambah dengan nama dan NPM. Fungsi ini mengembalikan request dan template html yang akan diisi dengan data yang saya taruh. Tidak lupa juga data yang saya taruh telah saya ekstrak dengan model yang tersedia terlebih dahulu
+### 2. Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?
+Pada dasarnya, kita harus mengetahui dulu tentang apa itu data delivery. Data delivery adalah sebuah istilah untuk proses perpindahan data dari sumber data atau database pusat menuju kepada sisi pengguna dengan tujuan tertentu dan berlaku dua arah. Sebelumnya, saya sendiri telah menjelaskan dalam Tugas 1 bahwa platform merupakan hasil gabungan dari perangkat keras dan lunak dimana hasil ini akan menjadi wadah bagi suatu program aplikasi. Sebuah platform sendiri pastinya dibangun dengan memiliki tujuan tertentu. Tanpa data, sebuah platform hanya dapat berfungsi sebagai landing page yang statis saja. Bahkan, pembuatan landing page sendiri memerlukan data untuk ditampilkan. Oleh karena itu, data delivery akan mendukung platform untuk menjadi lebih interaktif dan dinamis dalam memenuhi tujuan awal dibentuknya platform tersebut. 
 
-2. Setelah mengisi views.py, saya mendaftarkan nama routing yang ingin saya gunakan, yaitu "katalog/". Terlebih dahulu, saya mendaftarkan nama aplikasi pada route ini dengan nama 'katalog', selanjutnya saya mendaftarkan nama route tadi pada urlpatterns dengan memanggil fungsi katalog dari views.py untuk ditampilkan. Di akhir, saya melakukan pendaftaran nama aplikasi kepada program utama, yaitu settings.py dan urls.py di project_django
+### 3. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
+1. Membuat aplikasi `mywatchlist` dengan menjalankan script ini pada direktori Tugas 2 
+```bash
+    python manage.py startapp mywatchlist
+```
 
-3. Setelah views.py, models.py, dan urls.py telah selesai untuk dikonfigurasi, kini giliran saya menyocokkan data - data dalam fungsi tadi kepada template html yang tersedia. Untuk konfigurasi, saya menggunakan bracket {{}} untuk memanggil data dari fungsi. Pada data terperinci dari models, saya menggunakan forloop untuk iterasi tiap data yang akan ditampilkan 
+2. Menambahkan path aplikasi `mywatchlist` ke list **INSTALLED_APPS** pada `settings.py` milik folder `project_django`
+```bash
+    python manage.py startapp mywatchlist
+```
 
-4. Ketika semuanya telah selesai, saya melakukan deploy pada website yang saya buat dengan diawali add, commit, dan push pada repository yang telah saya buat. Tidak lupa saya tambahkan file dpl.yml untuk konfigurasi Heroku ditambah dengan aksi pip freeze pada versi - versi library di requirements.txt. Selanjutnya, saya juga menambahkan PROJECT_ROOT dan STATIC_ROOT di settings.py project_django.Saat semuanya telah terkonfigurasi, saya membuat aplikasi baru pada Heroku berjudul pbptugasdua. Lalu, pada cmd folder terkait, saya melakukan login terhadap heroku dilanjutkan dengan perintah clone untuk menyambungkan folder dengan App Heroku. Di akhir, saya melakukan perintah git add, commit, dan push seperti di awal, bedanya adalah perintah ini menuju ke App Heroku yang ada dengan sedikit perbedaan sintaks
+3. Membuat sebuah class model MyWatchList seperti berikut
+
+```python
+    watched = models.BooleanField()
+    title = models.CharField(max_length=255)
+    rating = models.TextField()
+    release_date = models.TextField()
+    review = models.TextField()
+```
+
+- watched : Menggunakan BooleanField() karena hanya terdapat dua status, yaitu sudah atau belum tertonton
+- title : Menggunakan CharField() dengan maksimum 255 character karena judul film tidak sepanjang deskripsi, field ini akan membantu menghemat memori
+- rating : Menggunakan TextField()
+
+4. Melakukan aktivasi model pada program dengan cara menjalankan kode berikut pada cmd 
+```bash
+    python manage.py makemigrations
+    python manage.py migrate
+```
+
+5. Menambahkan 10 data dengan cara membuat folder bernama `fixtures` dalam `mywatchlist` dan membuat file `mywatchlist_data.json`. Di file `mywatchlist_data.json`, pengisian 10 data tadi akan dilakukan dengan format key mengikuti model yang telah dibuat sebelumnya.
+
+6. Setelah data dibuat, saya menjalankan kode berikut agar data yang telah dibuat dapat terdeteksi oleh `manage.py`.
+```bash
+    python manage.py loaddata mywatchlist_data.json
+```
+
+7. Melakukan import terhadap beberapa package dari python dan membuat fungsi - fungsi untuk mengembalikan format HTML, XML, dan JSON pada `views.py`
+
+    - Import `HttpResponse` dan `serializers`
+    ```python
+        from django.http import HttpResponse
+        from django.core import serializers
+    ```
+
+    - Membuat fungsi HTML, XML, dan JSOn yang menerima parameter *request*
+    ```python
+        def show_mywatchlist_html(request):
+            .
+            .
+            .
+            .
+        return render(request, 'mywatchlist.html', context)
+    ```
+
+    ```python
+        def show_watchlist_xml(request):
+            .
+            .
+            .
+            .
+        return HttpResponse(serializers.serialize("xml", data_watchlist), content_type="application/xml")
+    ```
+
+    ```python
+        def show_watchlist_json(request):
+            .
+            .
+            .
+            .
+        return HttpResponse(serializers.serialize("json", data_watchlist), content_type="application/json")
+    ```
+
+    - Membuat folder `templates` dan membuat files format HTML bernama `mywatchlist.html` untuk menjadi template dari fungsi HTML
+
+8. Membuat file `urls.py` dan membuat path-nya dengan tujuan routing kepada fungsi yang telah dibuat pada `views.py`
+```python
+    app_name = 'mywatchlist'
+
+    urlpatterns = [
+        path('', show_mywatchlist, name='mywatchlist'),
+        path('html/', show_mywatchlist_html, name='mywatchlist'),
+        path('xml/', show_watchlist_xml, name='mywatchlist'),
+        path('json/', show_watchlist_json, name='mywatchlist'),
+    ]
+```
+
+
+
+
+
 

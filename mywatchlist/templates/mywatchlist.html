@@ -24,11 +24,15 @@
   {% comment %} Add the data below this line {% endcomment %}
   {% for item in data_mywatchlist %}
       <tr>
-          <th>{{item.watched}}</th>
-          <th>{{item.title}}</th>
-          <th>{{item.rating}}</th>
-          <th>{{item.release_date}}</th>
-          <th>{{item.review}}</th>
+          {% if watchItem.watched %}
+            <td>Sudah</td>
+          {% else %}
+            <td>Belum</td>
+          {% endif %}
+          <td>{{item.title}}</td>
+          <td>{{item.rating}}</td>
+          <td>{{item.release_date}}</td>
+          <td>{{item.review}}</td>
       </tr>
   {% endfor %}
 </table>
