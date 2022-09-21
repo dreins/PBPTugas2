@@ -7,13 +7,17 @@ NPM : 2106751083
 Kelas : PBP - C
 
 # 🔗 Links
-[Tugas 3 Deployment - HTML](https://pbptugastiga.herokuapp.com/mywatchlist/html/)
+-[Tugas 3 Deployment - HTML](https://pbptugastiga.herokuapp.com/mywatchlist/html/)
+-[Tugas 3 Deployment - HTML - Website Tugas 2](https://pbptugasdua.herokuapp.com/mywatchlist/html/)
 
-[Tugas 3 Deployment - XML](https://pbptugastiga.herokuapp.com/mywatchlist/xml/)
+-[Tugas 3 Deployment - XML](https://pbptugastiga.herokuapp.com/mywatchlist/xml/)
+-[Tugas 3 Deployment - XML - Website Tugas 2](https://pbptugastiga.herokuapp.com/mywatchlist/xml/)
 
-[Tugas 3 Deployment - JSON](https://pbptugastiga.herokuapp.com/mywatchlist/json/)
+-[Tugas 3 Deployment - JSON](https://pbptugastiga.herokuapp.com/mywatchlist/json/)
+-[Tugas 3 Deployment - JSON - Website Tugas 2](https://pbptugasdua.herokuapp.com/mywatchlist/json/)
 
-[Tugas 3 Deployment - Versi Bonus](https://pbptugastiga.herokuapp.com/mywatchlist/)
+-[Tugas 3 Deployment - Versi Bonus](https://pbptugastiga.herokuapp.com/mywatchlist/)
+-[Tugas 3 Deployment - Versi Bonus - Website Tugas 2](https://pbptugasdua.herokuapp.com/mywatchlist/)
 
 [Tugas 3 Repository](https://github.com/dreins/PBPTugas2.git)
 
