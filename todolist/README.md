@@ -7,7 +7,7 @@ NPM : 2106751083
 Kelas : PBP - C
 
 # 🔗 Links
-[Tugas 2 Deployment](https://pbptugasdua.herokuapp.com/katalog/)
+[Tugas 2 Deployment](https://pbptugasdua.herokuapp.com/todolist/)
 
 [Tugas 2 Repository](https://github.com/dreins/PBPTugas2.git)
 
