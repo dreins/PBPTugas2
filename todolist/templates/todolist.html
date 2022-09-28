@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div>
+    <center>
+  <div>
+    <div>
+      <h2>{{ username }} Todo's</h2>
+      
+    </div>
+    <table class="content-table" cellspacing = "40">
+      <thead>
+        <tr>
+          <th>Created On</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Done yet?</th>
+          <th>Remove Task</th>
+        </tr>
+      </thead>
+     <tbody>
+      {% for todo in mytodo %}
+        <tr>
+          <td>{{ todo.date }}</td>
+          <td>{{ todo.title }}</td>
+          <td>{{ todo.description }}</td>
+          {% if todo.is_finished %}
+            <td>Done</td>
+          {% else %}
+            <td>In Progress</td>
+          {% endif %}
+          <td>
+            <a href="{% url 'todolist:update' todo.pk %}">I'm done</a>
+          </td>
+          <td>
+            <a href="{% url 'todolist:delete' todo.pk %}">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+     </tbody>
+    </table>
+    <h5 style="text-align: center;">last login at {{ last_login }}</h5>
+    <div>
+        <a href="{% url 'todolist:logout_user' %}" type="submit" value="Login" >Logout</a>
+        <a href="{% url 'todolist:create_task' %}">Create Task</a>
+    </div>
+  </div>
+    </center>
+</div>
+{% endblock content %}
