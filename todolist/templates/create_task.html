@@ -6,29 +6,44 @@
 
 {% block content %}  
 
-<div class = "Create Task">
-    <center>
-    <h1>Create Task</h1>  
+<section class="">
+    <div class="relative flex flex-col justify-center min-h-screen w-screen overflow-hiddens bg-gradient-to-r from-fuchsia-500 via-red-600 to-orange-400">
+        <div class="w-full p-0 m-auto rounded shadow-lg lg:max-w-md my-5"> 
 
-        <form method="POST" >  
-            {% csrf_token %}  
-            <table class="content-table" cellspacing = "40">  
-                {{ form.as_table }}  
-                <tr>  
-                    <td></td>
-                    <td><input type="submit" name="submit" value="Tambah Task Baru"/></td>  
-                </tr>  
-            </table>  
-        </form>
-
-    {% if messages %}  
-        <ul>   
-            {% for message in messages %}  
-                <li>{{ message }}</li>  
-                {% endfor %}  
-        </ul>   
-    {% endif %}
-    </center>
-</div>  
+        <form method="POST" action="" class="p-10 bg-white bg-opacity-50 rounded-xl drop-shadow-lg space-y-2">  
+            {% csrf_token %}
+            <div class="">
+                <h5 class="text-center text-3xl font-bold my-2">Create your Task, {{user.username}}!</h5> 
+            </div>  
+            <div class="flex flex-col space-y-1">
+                <label for="title" class="block mb-2 text-sm font-medium text-black">Title</label>
+                <input type="text" name="title" placeholder="What's your task?" class="block w-full px-4 py-2 mt-2 text-gray-800 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40" required = "">
+            </div> 
+            <div class="flex flex-col space-y-1">
+                <label for="description" class="block mb-2 text-sm font-medium text-black">Description</label>
+                <textarea type="text" rows="10" name="description" placeholder="Your task details..." class="block w-full px-4 py-2 mt-2 text-gray-800 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40" required = ""></textarea>
+            </div>
+            <button type="submit" class="w-full px-4 py-2 tracking-wide shadow-lg text-white transition-colors duration-200 transform bg-blue-800 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-gray-600">
+                Add task!
+            </button> 
+            <div>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div role="alert">
+                            <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+                                Message
+                            </div>
+                            <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                                {{ message }}
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div> 
+        </form> 
+        </div>   
+    </div>
+</section>
 
 {% endblock content %}

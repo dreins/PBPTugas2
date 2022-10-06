@@ -6,29 +6,63 @@
 
 {% block content %}  
 
-<div class = "login">
-    
-    <h1>Formulir Registrasi</h1>  
+<section class="">
+    <div class="relative flex flex-col justify-center min-h-screen w-screen overflow-hiddens bg-gradient-to-r from-fuchsia-500 via-red-600 to-orange-400">
+        <div class="w-full p-0 m-auto rounded shadow-lg lg:max-w-md my-5"> 
+            <form method="POST" action="" class="p-10 bg-white bg-opacity-50 rounded-xl drop-shadow-lg space-y-10">  
+            {% csrf_token %} 
+            <a href="{% url 'todolist:login_user' %}">
+                <button type="button" class="w-10 px-4 py-2 tracking-wide shadow-lg text-white transition-colors duration-200 transform bg-blue-800 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-gray-600">
+                    Kembali
+                </button> 
+            </a> 
+                <div>
+                    <h5 class="text-center text-3xl font-bold my-2">Formulir Registrasi</h5>
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div role="alert">
+                                <div class="bg-gray-600 text-white font-bold rounded-t px-4 py-2">
+                                    Message
+                                </div>
+                                <div class="border border-t-0 border-b-gray-700 rounded-b bg-red-100 px-4 py-3 text-gray-800">
+                                    {{ message }}
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %} 
+                </div>
 
-        <form method="POST" >  
-            {% csrf_token %}  
-            <table class="content-table" cellspacing = "40">  
-                {{ form.as_table }}  
-                <tr>  
-                    <td></td>
-                    <td><input type="submit" name="submit" value="Daftar"/></td>  
-                </tr>  
-            </table>  
-        </form>
+                <div class="flex flex-col space-y-1">
+                    <label for="username" class="block mb-2 text-base font-semibold text-black">Username :</label>
+                    <input type="text" name="username" placeholder="Type your username here..." class="form-control block w-full px-4 py-2 mt-2 text-gray-800 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40" required = "">
+                    <label class="text-xs text-red-700 text-opacity-100">*Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</label>
+                </div>
+                            
+                <div class="flex flex-col space-y-1">
+                    <label for="password" class="block mb-2 text-base font-semibold text-black">Your password :</label>
+                    <input type="password" name="password" id="password" placeholder="••••••••" class="form-control block w-full px-4 py-2 mt-2 text-gray-800 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40" required = "">
+                    <ul class="list-disc list-inside text-xs text-red-700 text-opacity-100">
+                        <li>Your password can’t be too similar to your other personal information.</li>
+                        <li>Your password must contain at least 8 characters.</li>
+                        <li>Your password can’t be a commonly used password.</li>
+                        <li>Your password can’t be entirely numeric.</li>
+                    </ul>
+                </div>
 
-    {% if messages %}  
-        <ul>   
-            {% for message in messages %}  
-                <li>{{ message }}</li>  
-                {% endfor %}  
-        </ul>   
-    {% endif %}
+                <div class="flex flex-col space-y-1">
+                    <label for="confirm_password" class="block mb-2 text-base font-semibold text-black">Your password :</label>
+                    <input type="password" name="confirm_password" id="confirm_password" placeholder="••••••••" class="form-control block w-full px-4 py-2 mt-2 text-gray-800 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40" required = "">
+                    <label class="text-xs text-red-700 text-opacity-100">*Enter the same password as before, for verification.</label>
+                </div>
 
-</div>  
+                <button type="submit" value="Login" class="w-full px-4 py-2 tracking-wide shadow-lg text-white transition-colors duration-200 transform bg-blue-800 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-gray-600">
+                    Daftar
+                </button> 
+                </form>
+            </div>
+        </div>  
+    </div>
+</section>
 
 {% endblock content %}

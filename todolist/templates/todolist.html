@@ -1,51 +1,64 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="">
+  <main class=relative>
+    <div class="flex flex-col justify-center min-h-screen max-w-screen-lg overflow-hiddens bg-gradient-to-r from-fuchsia-500 via-red-600 to-orange-400">
+      <div class="mx-10 md:mx-20 lg:mx-40 w-screenrounded-lg p-4">
+        <div>
+          <h2 class="mb-2 text-center text-3xl font-bold text-gray-900 dark:text-gray-800">{{ username }} Todo's</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 hover:bg-sky-700">
+          {% for todo in mytodo %}
+          <div class="p-10 bg-white bg-opacity-50 rounded-xl drop-shadow-lg space-y-2 my-5 mx-10">
+            <div class="bg-red-500 text-white font-bold rounded px-4 py-2">
+              Created on : {{ todo.date }}
+            </div>
+            <div class="flex-wrap justify-start items-start">
+              
+            <h3 class="mb-2 text-3xl font-bold tracking-tight text-black dark:text-black">{{ todo.title }}</h3>
+            <p class="mb-5 text-base text-gray-800 sm:text-lg dark:text-gray-800">{{ todo.description }}</p>
+            <div class="flex flex-wrap mt-auto gap-21 mx-10 px-4 py-2">
+              <a href="{% url 'todolist:update' todo.pk %}">
+                <button type="submit" value="Login" class="w-full px-4 py-2 tracking-wide shadow-lg text-white transition-colors duration-200 transform bg-blue-800 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-gray-600">
+                  Done
+                </button> 
+              </a>
+              <a href="{% url 'todolist:delete' todo.pk %}">
+                <button type="submit" value="Login" class="w-full px-4 py-2 tracking-wide shadow-lg text-white transition-colors duration-200 transform bg-red-800 rounded-md hover:bg-red-600 focus:outline-none focus:bg-gray-600">
+                  Delete
+                </button> 
+              </a>
+            </div>
+            <div class="flex flex-wrap mt-auto gap-21 mx-10 px-4 py-2"></div>
+            <div class="text-center bg-gray-600 text-white font-bold rounded px-4 py-2">
+              {% if todo.is_finished %}
+                Done
+              {% else %}
+                In Progress
+              {% endif %}
+            </div>
 
-<div>
-    <center>
-  <div>
-    <div>
-      <h2>{{ username }} Todo's</h2>
-      
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+        <div class="flex flex-col mt-auto gap-21 mx-10 px-4 py-2">
+          <a href="{% url 'todolist:create_task' %}">
+            <button type="submit" value="Login" class="w-full px-4 py-2 tracking-wide shadow-lg text-white transition-colors duration-200 transform bg-blue-800 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-gray-600">
+              Create Task
+            </button>
+          </a>
+  
+        </div>
+        <div class="flex flex-col mt-auto gap-21 mx-10 px-4 py-2">
+          <a href="{% url 'todolist:logout_user' %}" type="submit" value="Login" >
+            <button type="submit" value="Login" class="w-full px-4 py-2 tracking-wide shadow-lg text-white transition-colors duration-200 transform bg-red-800 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-gray-600">
+              Logout
+            </button>
+          </a>
+        </div>
+      </div>
     </div>
-    <table class="content-table" cellspacing = "40">
-      <thead>
-        <tr>
-          <th>Created On</th>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Status</th>
-          <th>Done yet?</th>
-          <th>Remove Task</th>
-        </tr>
-      </thead>
-     <tbody>
-      {% for todo in mytodo %}
-        <tr>
-          <td>{{ todo.date }}</td>
-          <td>{{ todo.title }}</td>
-          <td>{{ todo.description }}</td>
-          {% if todo.is_finished %}
-            <td>Done</td>
-          {% else %}
-            <td>In Progress</td>
-          {% endif %}
-          <td>
-            <a href="{% url 'todolist:update' todo.pk %}">I'm done</a>
-          </td>
-          <td>
-            <a href="{% url 'todolist:delete' todo.pk %}">Delete</a>
-          </td>
-        </tr>
-      {% endfor %}
-     </tbody>
-    </table>
-    <h5 style="text-align: center;">last login at {{ last_login }}</h5>
-    <div>
-        <a href="{% url 'todolist:logout_user' %}" type="submit" value="Login" >Logout</a>
-        <a href="{% url 'todolist:create_task' %}">Create Task</a>
-    </div>
-  </div>
-    </center>
+  </main>
 </div>
 {% endblock content %}

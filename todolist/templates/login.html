@@ -5,41 +5,52 @@
 {% endblock meta %}
 
 {% block content %}
-
-<div class = "login">
-
-    <h1>Login</h1>
-
-    <form method="POST" action="">
-        {% csrf_token %}
-        <table class="content-table" cellspacing = "40" cellspacing = "20">
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
-                    
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
-    </form>
-
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}     
+<section class="">
+    <div class="relative flex flex-col justify-center min-h-screen w-screen overflow-hiddens bg-gradient-to-r from-fuchsia-500 via-red-600 to-orange-400">
+        <div class="w-full p-0 m-auto rounded shadow-lg lg:max-w-md my-5">
         
-    Belum mempunyai akun? <a href="{% url 'todolist:register' %}">Buat Akun</a>
+            <form method="POST" action="" class="p-10 bg-white bg-opacity-50 rounded-xl drop-shadow-lg space-y-10">
 
-</div>
+                {% csrf_token %}
+                <div class="">
+                    <h5 class="text-center text-3xl font-bold my-2">Todolist's Login</h5>
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div role="alert">
+                                <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+                                Danger
+                                </div>
+                                <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                                    {{ message }}
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %} 
+                </div>
+
+                <div class="flex flex-col space-y-1">
+                    <label for="username" class="block mb-2 text-sm font-medium text-black">Username</label>
+                    <input type="text" name="username" placeholder="Type your username here..." class="block w-full px-4 py-2 mt-2 text-gray-800 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40" required = "">
+                </div>
+                        
+                <div class="flex flex-col space-y-1">
+                    <label for="password" class="block mb-2 text-sm font-medium text-black">Your password</label>
+                    <input type="password" name="password" id="password" placeholder="••••••••" class="block w-full px-4 py-2 mt-2 text-gray-800 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40" required = "">
+                </div>
+                
+                <div class="flex flex-col space-y-1">
+                    <button type="submit" class="w-full px-4 py-2 tracking-wide shadow-lg text-white transition-colors duration-200 transform bg-blue-800 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-gray-600">
+                        Login
+                    </button>
+                </div>
+
+                <div class="text-sm font-medium text-black">
+                    Not registered? <a href="{% url 'todolist:register' %}" class="text-blue-900 hover:underline">Create account</a>
+                </div>
+            </form> 
+        </div>   
+    </div>
+</section>
 
 {% endblock content %}

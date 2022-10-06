@@ -1,4 +1,4 @@
-# PBP Tugas 4
+# PBP Tugas 5
 
 Nama : Davyn Reinhard Santoso
 
@@ -14,114 +14,78 @@ Kelas : PBP - C
 
 # Jawaban
 
-### 1. Apa kegunaan `{% csrf_token %}` pada elemen `<form>`? Apa yang terjadi apabila tidak ada potongan kode tersebut pada elemen `<form>`?
-Pada dasarnya, CSRF merupakan singkatan dari Cross-Site Request Forger yang merupakan istilah dari serangan sederhana yang dapat dilakukan oleh hacker pada suatu website. CSRF token akan berguna untuk mencegah serangan tersebut, dimana CSRF akan mencegah hacker untuk melakukan request terhadap HTTP untuk memasukkan script dan mengumpankannya kepada program. Token ini memiliki wujud suatu kode rahasia yang unik dan susah untuk diakses oleh orang. Tanpa potongan kode tersebut, hacker akan mudah mengakses HTTP dari website yang kita buat, dimana menyebabkan mereka untuk mudah dalam memasukkan script tertentu dan melakukan hal yang mereka inginkan tanpa penghalang
+### 1. Apa perbedaan dari Inline, Internal, dan External CSS? Apa saja kelebihan dan kekurangan dari masing-masing style?
+## 1. Inline CSS
+Merupakan jenis CSS yang kodenya dituliskan langsung dalam atribut HTML
 
-### 2. Apakah kita dapat membuat elemen `<form>` secara manual (tanpa menggunakan generator seperti `{{ form.as_table }}`)? Jelaskan secara gambaran besar bagaimana cara membuat `<form>` secara manual.
-Menurut saya, elemen `<form>` dapat dibuat secara manual. Secara gambaran besar, suatu form merupakan diletakkan dengan cara menginstansiasikan object pada framework Django. Secara manual, kita dapat membuat form melalui HTML dengan cara menuliskannya satu - satu dan menjalankan mekanisme pengambilan value dari tiap - tiap form seperti mekanisme POST pada Django.
+Kelebihan :
+- Proses loading website lebih cepat dikarenakan permintaan HTTP yang kecil
+- Memudahkan programmer melakukan debugging
 
-### 3. Jelaskan proses alur data dari submisi yang dilakukan oleh pengguna melalui HTML form, penyimpanan data pada database, hingga munculnya data yang telah disimpan pada template HTML.
-Berdasarkan kode yang telah saya buat, seluruh submisi data pada form akan dipicu oleh keinginan user. Dalam hal ini, kita dapat melihat pada penggunaan syntax `request.user` untuk melakukan segala sesuatu pada task. Nantinya, dengan method `POST`, keinginan user akan dikirimkan kepada pusat atau database dari server. Nantinya, submisi yang dilakukan oleh user melalui HTML akan diterima oleh `views` dan `views` akan melakukan pekerjaannya untuk melakukan perubahan dan memberikan respon pada user. 
+Kekurangan :
+- Tidak efisien karena Inline style CSS hanya bisa diterapkan pada satu elemen HTML
+
+## 2. Internal CSS
+Merupakan jenis CSS yang ditulis langsung dalam tag `<style>` dengan kode deklarator `<html>` di bagian atas file html.
+
+Kelebihan :
+- Baik untuk pengembangan yang membutuhkan kerumitan tinggi karena perubahan CSS hanya diterapkan pada satu halaman saja
+- Tidak perlu melakukan upload file ulang karena HTML dan CSS berada dalam satu file
+
+Kekurangan :
+- Tidak efisien dalam pembuatan beberapa file saat menggunakan CSS yang sama
+- Menyebabkan loading yang berat karena program harus menjalankan banyak CSS
+
+
+## 3. External CSS
+Merupakan jenis CSS yang kodenya ditulis terpisah dengan file HTML-nya, yaitu pada sebuah file khusus dengan ekstensi `.css`
+
+Kelebihan :
+- Penggunaan CSS dapat diterapkan pada beberapa halaman website tanpa harus diulang
+- Proses loading website menjadi lebih cepat
+
+Kekurangan:
+- Dapat menyebabkan design yang berantakan ketika CSS gagal dipanggil oleh file terkait
+
+### 2.  Jelaskan tag HTML5 yang kamu ketahui.
+- `<a></a>` : Membuat hyperlink menuju halaman lain
+- `<button></button>` : Membuat button yang dapat di-klik dan memiliki aksi
+- `<form></form>` : Mendeklarasikan formulir untuk menerima input pengguna
+- `<nav></nav>` : Membuat navigation bar pada aplikasi website
+- `<div></div>` : Sebagai pembagi dan penggabung antara komponen yang satu dengan lainnya
+- `<label></label>` : Membuat tulisan untuk ditampilkan sebagai label
+- `<input></input>` : Membuat tempat untuk menerima input atau aksi dari pengguna
+- `<link></link>` : Mendefinisikan hubungan dokumen dan sumber dari luar
+- `<style></style>` : Mendefinisikan style design dan informasi untuk dokumen terkait
+- `<svg></svg>` : Kontainer untuk gambar format SVG
+
+### 3.  Jelaskan tipe-tipe CSS selector yang kamu ketahui.
+1. Tag Selector, yaitu selector yang menggunakan tag HTML sebagai selectornya
+2. Class Selector, yaitu selector yang memilih elemen berdasarkan nama class
+3. ID Selector, yaitu selector yang menggunakan nomor unik ID untuk memilih elemen
+4. Universal selector, yaitu selector yang berguna untuk menjangkau semua file HTML yang dituju
+5. Attribute Selector, yaitu selector yang memilih elemen berdasarkan atribut
 
 ### 4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
-1. Membuat aplikasi `todolist` dengan menjalankan script ini pada direktori Tugas 2 
+1. Mengaktifkan virtual env menggunakan perintah 
 ```bash
-    python manage.py startapp todolist
+    env\Scripts\activate.bat
 ```
 
-2. Menambahkan path aplikasi `todolist` ke list **INSTALLED_APPS** pada `settings.py` milik folder `project_django`
-```bash
-    INSTALLED_APPS = [
-        .....,
-        'todolist',
-        .....,
-    ]
+2. Menjalankan perintah instalasi Tailwind CSS mengikuti website berikut
+    `https://django-tailwind.readthedocs.io/en/latest/installation.html`
+
+3. Mengisi tag milik Tailwind pada file templates utama, yaitu `base.html`
+```HTML
+    {% load tailwind_tags %}
+    ...
+    <head>
+        ...
+        {% tailwind_css %}
+    ...
+    </head>
 ```
 
-3. Membuat sebuah class model Task seperti berikut, sesuai kriteria yang diberikan pada tugas
-
-```python
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        null = True,
-        blank = True
-    )
-    date = models.DateField(auto_now=True)
-    title = models.CharField(max_length=200)
-    description = models.TextField()
-    is_finished = models.BooleanField(default=False)
-```
-
-- user : Menggunakan ForeignKey() agar user dapat berdiri secara independen
-- date : Menggunakan DateField() dengan tambahan script `auto_now=True` agar tanggal dapat ditampilkan secara jelas pada program
-- title : Menggunakan CharField() untuk judul
-- description : Menggunakan TextField() untuk deskripsi
-- is_finished : Menggunakan BooleanField() dengan tambahan script `default=False` karena task tidak mungkin di-POST jika telah selesai
-
-4. Melakukan aktivasi model pada program dengan cara menjalankan kode berikut pada cmd 
-```bash
-    python manage.py makemigrations
-    python manage.py migrate
-```
-
-5. Menambahkan 10 data dengan cara membuat folder bernama `fixtures` dalam `mywatchlist` dan membuat file `mywatchlist_data.json`. Di file `mywatchlist_data.json`, pengisian 10 data tadi akan dilakukan dengan format key mengikuti model yang telah dibuat sebelumnya.
-
-6. Membuat fungsi - fungsi yang diperlukan pada `views.py` seperti
-    ```python
-        @login_required(login_url='/todolist/login/')
-        def show_task(request):
-            .........
-
-        def register(request):
-            .........
-
-        def login_user(request):
-            .........
-
-        def logout_user(request):
-            .........
-        
-        @login_required(login_url='/todolist/login/')
-        def create_task(request):
-            .........
-
-        @login_required(login_url='/todolist/login/')
-        def update(request, key):
-            .........
-
-        @login_required(login_url='/todolist/login/')
-        def delete(request, key):
-            .........
-    ```
-
-    
-
-    - Membuat folder `templates` dan membuat files format HTML untuk menjadi template dari fungsi HTML
-
-8. Membuat file `urls.py` dan membuat path-nya dengan tujuan routing kepada fungsi yang telah dibuat pada `views.py`
-```python
-    app_name = 'todolist'
-
-    urlpatterns = [
-        path('', show_task, name='show_task'),
-        path('login/', login_user, name='login_user'),
-        path('register/', register, name='register'),
-        path('create-task/', create_task, name='create_task'),
-        path('logout/', logout_user, name='logout_user'),
-        path('update-task/<int:key>/', update, name='update'),
-        path('delete-task/<int:key>/', delete, name='delete'),
-    ]
-```
-
-9. Menambahkan url `todolist` dalam `urls.py` milik proyek, yaitu `project_django`
-
-```python
-    urlpatterns = [
-        .........,
-        path('todolist/', include('todolist.urls')),
-        .........,
-    ]
-```
+4. Melakukan penghiasan pada file html
 
 

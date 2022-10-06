@@ -1,6 +1,9 @@
+from email import message
+from turtle import tilt, title
 from django.shortcuts import render, redirect
 from todolist.forms import TodoForm
 from todolist.models import Task
+from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -21,17 +24,27 @@ def show_task(request):
     return render(request, "todolist.html", context)
 
 def register(request):
-    form = UserCreationForm()
 
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Akun telah berhasil dibuat!')
-            return redirect('todolist:login_user')
-    
-    context = {'form':form}
-    return render(request, 'register.html', context)
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confirm_password')
+        user_exist = User.objects.filter(username=username).exists()
+        if password != confirm_password:
+            messages.info(request, 'Confirm Password doesn\'t match!')
+        elif user_exist:
+            messages.info(request, 'User already registered!')
+        elif not user_exist:
+            user = User.objects.create_user(username=username, password=confirm_password)
+            if user == None:
+                messages.info(request, 'Try again!')
+            else:
+                user.save()
+                return redirect('todolist:login_user')
+        else:
+            messages.info(request, 'Try again!')
+
+    return render(request, 'register.html')
 
 def login_user(request):
     if request.method == 'POST':
@@ -57,18 +70,18 @@ def logout_user(request):
 
 @login_required(login_url='/todolist/login/')
 def create_task(request):
-    form = TodoForm()
     if request.method == 'POST':
-        form = TodoForm(request.POST)
-        if form.is_valid():
-            formdata = form.save(commit=False)
-            formdata.user = request.user
-            formdata.save()
-            return HttpResponseRedirect(reverse('todolist:show_task'))
-    else:
-        messages.info(request, 'Silahkan masukkan to do anda!')
+        user = request.user
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        task = Task.objects.create(user = user, title = title, description = description)
+        task.save()
+        if task == None:
+            messages.info(request, 'Silahkan masukkan to do anda!')
+        else:
+            return redirect('todolist:show_task')
         
-    return render(request, 'create_task.html', {'form': form})
+    return render(request, 'create_task.html')
 
 @login_required(login_url='/todolist/login/')
 def update(request, key):
