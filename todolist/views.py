@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from todolist.models import Task
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -7,6 +7,9 @@ import datetime
 from django.urls import reverse
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from django.core import serializers
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse, HttpResponse
 
 # Create your views here.
 @login_required(login_url='/todolist/login/')
@@ -91,3 +94,47 @@ def delete(request, key):
     mytask = Task.objects.get(user = request.user,pk = key)
     mytask.delete()
     return redirect('todolist:show_task')
+
+@login_required(login_url='/todolist/login/')
+@csrf_exempt
+def create_task_ajax(request):
+    if request.method == 'POST':
+        user = request.user
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        task = Task.objects.create(user = user, title = title, description = description)
+        if task == None:
+            messages.info(request, 'Silahkan masukkan to do anda!')
+        else:
+            return JsonResponse({'message : Task Created!'})
+        
+    return JsonResponse({'message : Task Updated!'})
+
+def show_json(request):
+    data = Task.objects.filter(user=request.user).order_by('id')
+
+    return HttpResponse(
+        serializers.serialize("json", data), 
+        content_type="application/json"
+    )
+
+@login_required(login_url='/todolist/login/')
+@csrf_exempt
+def update_ajax(request, key):
+    if request.method == 'POST':
+        mytask = get_object_or_404(Task, user = request.user, pk = key)
+        mytask.is_finished = not(mytask.is_finished)
+        mytask.save()
+
+    return JsonResponse({'error': False})
+
+@login_required(login_url='/todolist/login/')
+@csrf_exempt
+def delete_ajax(request, key):
+    if request.method == 'POST':
+        mytask = get_object_or_404(Task, user = request.user, pk = key)
+        mytask.delete()
+        
+    return JsonResponse({'error': False})
+
+
